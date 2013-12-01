@@ -1,0 +1,24 @@
+SUN HWAN
+
+ I think this is a pretty interesting project. I think the key to your project is to create each tack. I have a feeling that parsing the link and downloading metadata from the site could be harder than you expected, but once this works, everything else would be pretty straight forward. There might be different types of metadata for each link, so try to come up with a reasonable way to store and display a variety of tacks.  
+
+
+
+Jason
+
+I like the idea, it sounds like it could be pretty interesting! Figuring out what metadata and images to pull from an arbitrary link might be fairly challenging to do in some reasonable manner. I'm assuming that the groups also implies access controls to boards of who can post tacks and who can't. This also means that boards have owners and sub-boards would also have owners (but they might be different?). The Twitter integration also implies that OAuth or similar should be used to do authentication, which should be pretty straightforward, as well as the Twitter API to grab the avatar. I'd also like to see some thought put into what the actual "tack board" looks like, from a layout perspective. For example, I'm curious to see how sub-boards are differentiated from main boards. Given the relative similiarity to the Grumblr homework, I also expect to see the "nice to have" features implemented. 
+
+
+
+Charlie
+
+"Overall your project idea is good, and will provide an excellent opportunity for you to sucessfully demonstrate the fundamental web application engineering ideas of the course.
+
+One important risk of your project is that it's not completely clear to me how you will distinguish ""associated metadata"" for a user's posted site, and it seems as if your site depends on this aspect in a significant way.  How will you parse the sites to which users link?  What metadata are you downloading?
+
+In the current form of the proposal, it's difficult for me to evaluate if this project is an appropriate size for a three-person team.  (This is not a flaw with your proposal; it's just naturally difficult to evaluate this aspect until you write a more detailed project specification later in the course.)  In several weeks we will schedule a meeting in which we will discuss your project in more detail.  You should come to that meeting prepared to discuss your metadata-parsing in detail, as well as discuss how you will split the work of your project among your team members.
+
+Looking forward to the next phases of your project,
+
+-charlie"
+

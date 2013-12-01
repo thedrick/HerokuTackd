@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tack'd</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'tackd/style/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'tackd/style/main.css' %}">
+	<link href='http://fonts.googleapis.com/css?family=Bree+Serif|Shadows+Into+Light|Open+Sans:400,700|Amatic+SC|Delius+Unicase|Vibur|Bad+Script|La+Belle+Aurore' rel='stylesheet' type='text/css'>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+{% block content %}
+{% endblock %}
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="{% static 'tackd/js/tackd_app.js' %}"></script>
+<script type="text/javascript" src="{% static 'tackd/js/typeahead.min.js' %}"></script>
+</body>
+</html>

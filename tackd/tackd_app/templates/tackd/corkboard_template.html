@@ -1,0 +1,49 @@
+{% extends "tackd/base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div id="corkboard">
+	<div id="content">
+		<div id="title">Tack'd
+		</div>
+		{% include "tackd/navigation.html" %}
+		<div class="corkboards">
+			<div class="paperbox firstbox">
+				<div class="plus"><i class="fa fa-plus-circle"></i></div>
+				<span class="tacktitle">Add a Board</span>
+			</div>
+			{% for board in boards %}
+				{% if board.id|divisibleby:"2" %}
+					<a class="paperbox left" href="/tackd/board/{{board.id}}" style="background-image: url('{% url 'board_photo' board.id %}');">
+				{% else %}
+					<a class="paperbox right" href="/tackd/board/{{board.id}}" style="background-image: url('{% url 'board_photo' board.id %}');">
+				{% endif %}
+				<div class="box">
+					<span class="boardtitle">{{board}}</span>
+					<div class="boardid">{{board.id}}</div>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="darkness" hidden>
+			<div class="lightform">
+				<div class="lightcancel"><i class="fa fa-times"></i></div>
+				<div class="lighttitle">Add a Board</div>
+				<form id="createform" enctype="multipart/form-data" method="post" action="/tackd/new_board">
+					<div class="addimage"><i class="fa fa-plus"></i><div class="add-board-photo">Add Photo</div></div>
+					<div class="add-board-details">
+						<input type="text" name="title" placeholder="Title" />
+						<div class="new-board-privacy-opt">
+							<input class="new-board-privacy" type="radio" name="privacy" value="public" /> Public
+							<input class="new-board-privacy" type="radio" name="privacy" value="private" /> Private
+							<input class="new-board-privacy" type="radio" name="privacy" value="secret" /> Secret
+						</div>
+					</div>
+					<input id="new-board-photo" type="file" name="image" />
+					<input id="board-submit" type="button" name="submit-button" value="Tack It" />
+					{% csrf_token %}
+				</form>
+			</div>
+		</div>
+</div>
+{% endblock %}

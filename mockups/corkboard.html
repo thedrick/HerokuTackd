@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Tack'd</title>
+	<link rel="stylesheet" type="text/css" href="styles/reset.css">
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+	<div id="corkboard">
+		<div id="content">
+			<div id="title">Tack'd</div>
+			<nav>
+				<span class="nav-button"><i class="fa fa-search"></i></span>
+				<span class="nav-button"><i class="fa fa-bell-o"></i></span>
+				<span class="nav-button"><i class="fa fa-power-off"></i></span>
+			</nav>
+			<div class="corkboard">
+				<div class="paperbox left firstbox">
+					<div class="plus"><i class="fa fa-plus"></i></div>
+					<span class="tacktitle">Add a Board</span>
+				</div>
+				<div class="paperbox right">
+					<img src="img/europe.jpg" />
+					<span class="tacktitle">Europe Trip!</span>
+				</div>
+				<div class="paperbox left">
+					<img src="img/city.jpg" />
+					<span class="tacktitle">Stuff in the City</span>
+				</div>
+				<div class="paperbox right">
+					<img src="img/family.jpg" />
+					<span class="tacktitle">Family Board</span>
+				</div>
+			</div>
+			</div>
+			<div class="darkness" hidden>
+				<div class="lightform">
+					<div class="lightcancel"><i class="fa fa-times"></i></div>
+					<div class="lighttitle">Create a Board</div>
+					<form id="createform">
+						<div class="addimage"><i class="fa fa-plus"></i> Photo</div>
+						<input type="text" name="title" placeholder="Title" />
+						<input type="file" name="photo" />
+						<input type="button" name="submit" value="Create" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="js/tackd.js"></script>
+</body>
+</html>

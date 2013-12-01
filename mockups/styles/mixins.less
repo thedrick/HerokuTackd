@@ -1,0 +1,67 @@
+// Mixins
+// ----------------------------------------------
+.background-cover {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+.box-shadow(@shadow: 0 0 6px @grey-med) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+.circle(@size) {
+  width: @size;
+  height: @size;
+  border-radius: 100%;
+}
+.circle-full {
+  border-radius: 100%;
+}
+.optimize-text {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+.overlay(@background: rgba(0, 0, 0, 0.2)) {
+  background: @background;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.transform(@transform) {
+  -webkit-transform: @transform;
+  -o-transform: @transform;
+  transform: @transform;
+}
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+.handwritten {
+  font-family: 'Shadows Into Light', cursive;
+}
+.title-font {
+  font-family: 'Courgette', cursive;
+}
+.sans-font {
+  font-family: 'Open Sans', sans-serif;
+}
+.inset-boxshadow {
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}

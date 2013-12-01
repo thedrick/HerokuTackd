@@ -1,0 +1,114 @@
+{% extends 'tackd/base.html' %}
+{% block content %}
+  <div id="corkboard"></div>
+    <div class="board-header">
+      <div class="board-header-title">
+        {{board}}
+      </div>
+
+      <div class="board-header-search">
+        <form id="search-form" method="POST" action="/tackd/search">
+          <input class="search-input" type="text" name="text" placeholder="Search">
+          <button class="search-glass" type="submit"><i class="fa fa-search"></i></button>
+          <input id="board-id-hidden" type="hidden" name="board" value="{{board.id}}" />
+          {% csrf_token %}
+        </form>
+      </div>
+
+      <div class="board-header-nav">
+        <ul class="links">
+          <li class="nav-link"><a href="/tackd/boards"><i class="fa fa-home"></i></a></li>
+          <li class="nav-link"><a href="#"><i class="fa fa-bell-o"></i></a></li>
+          <li class="nav-link"><a href="/tackd/logout"><i class="fa fa-power-off"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+  
+    <div id="content" class="board-content">
+      <form id="search">
+          <input type="text" name="username" placeholder="user" />
+          <button id="new-user-submit">Add User</button>
+          <input id="board-id-hidden" type="hidden" name="board" value="{{board.id}}" />
+          {% csrf_token %}
+        </form>
+      <div class="tacks">
+        <form id="new-tack-form">
+          <input id="tack-url-input" type="text" name="url" placeholder="Paste URL"  />
+          <input id="tack-desc-input" type="text" name="description" placeholder="  Description" />
+          <button id="new-tack-submit">Create Tack</button>
+          <input id="board-id-hidden" type="hidden" name="board" value="{{board.id}}" />
+          {% csrf_token %}
+        </form>
+
+        {% for tack in tacks %}
+        <div class="tack">
+          <div class="tack-img-wrapper">
+            <div class="tack-img-overlay"></div>
+            <img src="{% url 'tack_photo' tack.id %}" class="tack-img" />
+          </div>
+          <div class="tack-info">
+            <h4 class="tack-title">{{tack}}</h4>
+            <span class="tack-desc">
+              {{tack.description}}
+            </span>
+
+            <div class="tack-tags">
+              <div class="tag-block">
+                {% for tag in tack.tags.all %}
+                  <form class="tag-search" method="POST" action="/tackd/search">
+                    <button class="tack-tag" type="submit">{{tag.value}}</button>
+                    <input class="search-input" type="hidden" name="text" value="{{tag.value}}">
+                    <input id="board-id-hidden" type="hidden" name="board" value="{{board.id}}" />
+                    {% csrf_token %}
+                  </form>
+                {% endfor %}
+              </div>
+              <form id="tag-form" class="tag-form">
+                <input class="tag-form-input" type="text" name="tags" placeholder="Tags separated a space" />
+                <input class="tag-form-btn" type="button" value="Add Tags" />
+                <input type="hidden" name="tack" value="{{tack.id}}" />
+                <input type="hidden" name="board" value="{{board.id}}" />
+                {% csrf_token %}
+              </form>
+            </div>
+             <form method="POST" action="/tackd/tweet">
+              <input type="hidden" name="tack" value="{{tack.id}}" />
+              <input type="submit" value="Tweet Tack"/>
+              {% csrf_token %}
+            </form>
+
+            <div class="tack-extras">
+              <span class="tack-extra tack-{{tack.id}}-like"><i class="fa fa-heart"></i> <span class="num-extra">0</span></span>
+              <span class="tack-extra tack-{{tack.id}}-comment"><i class="fa fa-comment"></i> <span class="num-extra">0</span></span>
+            </div>
+
+            <div class="tack-comments tack-{{tack.id}}-comments">
+              <div class="comment-block">
+                {% for comment in tack.comments.all %}
+                <div class="tack-comment">
+                  <b>{{comment.user.user.username}}</b> commented: &ldquo;{{comment.text}}&rdquo;
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="add-comment">
+                <form id="new-comment-form" class="new-comment-form">
+                  <input class="tack-comment-input" type="text" name="text" placeholder="Type comment here" />
+                  <input class="tack-comment-btn" type="button" value="Comment" />
+                  <input type="hidden" name="tack" value="{{tack.id}}" />
+                  <input type="hidden" name="board" value="{{board.id}}" />
+                  {% csrf_token %}
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+    </div>
+  </div>
+  {% endblock %}
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript" src="js/tackd.js"></script>
